@@ -9,8 +9,8 @@ import com.dexter.news_application.model.remote.Article
 class MainViewModel(val repo: MyRepo) : ViewModel() {
 
 
-    fun getNews() : LiveData<List<Article>>{
-        return repo.getApiData()
+    fun getNews(q:String) : LiveData<List<Article>>{
+        return repo.getApiData(q)
     }
 
 }

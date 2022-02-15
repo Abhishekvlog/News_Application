@@ -1,11 +1,18 @@
 package com.dexter.news_application.model.remote
 
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiClient {
 
-    // https://newsapi.org/v2/everything?q=tesla&from=2022-01-14&sortBy=publishedAt&apiKey=90b71e0a0ff34c248e699ddd46014b65
 
-    @GET("v2/everything?q=tesla&apiKey=90b71e0a0ff34c248e699ddd46014b65&pageSize=100")
-    suspend fun getNews(): ResponseDto
+    /**
+     * It is used for making an api calling and here I am passing queries
+     */
+    @GET("v2/everything")
+    suspend fun getNews(
+        @Query("q") q: String,
+        @Query("apiKey") apiKey: String,
+        @Query("pageSize") pageSize: Int,
+    ): ResponseDto
 }

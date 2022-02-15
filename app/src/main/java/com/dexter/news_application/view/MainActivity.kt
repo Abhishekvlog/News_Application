@@ -2,6 +2,8 @@ package com.dexter.news_application.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,14 +31,30 @@ class MainActivity : AppCompatActivity() {
         viewModel =
             ViewModelProvider(this, MainViewModelFactory(repo)).get(MainViewModel::class.java)
 
-        viewModel.getNews().observe(this, Observer {
-            var list = it as ArrayList<Article>
-            Log.d("abhi",list.toString())
-            setRecyclerView(list)
+       loadApi("tesla")
+        editTXT.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
+            }
+
+            override fun onTextChanged(start: CharSequence?, p1: Int, p2: Int, p3: Int) {
+               loadApi(start.toString())
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
         })
 
 
+    }
+
+    private fun loadApi(s: String) {
+        viewModel.getNews(s).observe(this, Observer {
+            val list = it as ArrayList<Article>
+            Log.d("abhi",list.toString())
+            setRecyclerView(list)
+        })
     }
 
     private fun setRecyclerView(list: ArrayList<Article>) {
