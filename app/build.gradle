@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,13 +31,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
+    
 }
 
 dependencies {
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
+    def anko_version = '0.10.0'
     def arch_version = '2.2.0-alpha01'
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -56,11 +57,16 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
 
 
+    //Room
+    implementation 'androidx.room:room-ktx:2.1.0'
+    kapt 'androidx.room:room-compiler:2.1.0'
+
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$arch_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$arch_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$arch_version"
+
 
 
     //Glide

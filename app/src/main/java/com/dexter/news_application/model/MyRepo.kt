@@ -13,13 +13,6 @@ import java.util.*
 
 class MyRepo() {
 
-//    fun String.toDate(): Date?{
-//        return SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(this)
-//    }
-//
-//    users.sortedBy { it.enrolled_at.toDate() }
-
-
     fun getApiData(q: String) = liveData {
         try {
 
