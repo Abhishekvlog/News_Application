@@ -18,5 +18,6 @@
 * ViewModel
 * LiveData
 * Glide
+* Room
 
 
