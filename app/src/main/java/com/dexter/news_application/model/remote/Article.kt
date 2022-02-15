@@ -1,8 +1,10 @@
 package com.dexter.news_application.model.remote
 
 
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "article")
 data class Article(
     @SerializedName("author")
     val author: String,

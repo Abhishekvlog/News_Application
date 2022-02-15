@@ -7,15 +7,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Network {
 
-    private val httpLoggingInterceptor =
-        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        private const val BASE_URL = "https://newsapi.org/"
+        private fun getRetrofit(): Retrofit {
+            return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(OkHttpClient.Builder().build())
+                .build()
+        }
 
-    fun getInstance(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://newsapi.org/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build())
-            .build()
+        val apiClient: ApiClient = getRetrofit().create(ApiClient::class.java)
+
     }
-
-}

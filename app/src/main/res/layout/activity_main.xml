@@ -6,22 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <TextView
-        android:id="@+id/news"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:text="News App"
-        app:layout_constraintBaseline_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#075bb1"
+        android:id="@+id/view"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <EditText
         android:id="@+id/editTXT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Search in feed"
-        app:layout_constraintTop_toBottomOf="@+id/news" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
