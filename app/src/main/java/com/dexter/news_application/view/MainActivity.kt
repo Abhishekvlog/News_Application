@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             val list = it as ArrayList<Article>
             Log.d("abhi",list.toString())
             setRecyclerView(list)
+            count.text = "Total count:- ${it.size.toString()}"
         })
     }
 
